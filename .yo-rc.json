@@ -1,7 +1,7 @@
 {
   "generator-backbone": {
-    "appPath": "app",
-    "appName": "Askfm",
+    "appPath": "public",
+    "appName": "AskCode",
     "coffee": false,
     "testFramework": "mocha",
     "templateFramework": "lodash",

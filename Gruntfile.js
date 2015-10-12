@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: 'app',
+        app: 'public',
         dist: 'dist'
     };
 
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
         sass: {
           options: {
             sourceMap: true,
-            includePaths: ['app/bower_components']
+            includePaths: ['public/bower_components']
             },
           dist: {
             files: [{

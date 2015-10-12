@@ -1,5 +1,5 @@
 {
-  "name": "askfm",
+  "name": "AskCode",
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",
