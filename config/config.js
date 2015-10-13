@@ -6,7 +6,7 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'test4'
+      name: 'AskCode'
     },
     port: 3000,
     db: 'mongodb://localhost/test4-development'
@@ -15,7 +15,7 @@ var config = {
   test: {
     root: rootPath,
     app: {
-      name: 'test4'
+      name: 'AskCode'
     },
     port: 3000,
     db: 'mongodb://localhost/test4-test'
@@ -24,7 +24,7 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'test4'
+      name: 'AskCode'
     },
     port: 3000,
     db: 'mongodb://localhost/test4-production'

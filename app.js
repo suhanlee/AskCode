@@ -3,7 +3,13 @@ var express = require('express'),
   glob = require('glob'),
   mongoose = require('mongoose');
 
-mongoose.connect(config.db);
+var opts = {
+  server: {
+    socketOptions: { keepAlive: 1 }
+  }
+};
+
+mongoose.connect(config.db, opts);
 var db = mongoose.connection;
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
