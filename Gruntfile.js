@@ -1,6 +1,6 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
-var SERVER_PORT = 9000;
+var SERVER_PORT = 3000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -27,6 +27,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        develop: {
+            server: {
+                file: 'app.js'
+            }
+        },
         watch: {
             options: {
                 nospawn: true,
@@ -142,7 +147,7 @@ module.exports = function (grunt) {
               expand: true,
               cwd: '<%= yeoman.app %>/styles',
               src: ['*.{scss,sass}'],
-              dest: '.tmp/styles',
+              dest: '<%= yeoman.dist %>/styles',
               ext: '.css'
             }]
           },
@@ -151,7 +156,7 @@ module.exports = function (grunt) {
               expand: true,
               cwd: '<%= yeoman.app %>/styles',
               src: ['*.{scss,sass}'],
-              dest: '.tmp/styles',
+              dest: '<%= yeoman.dist %>/styles',
               ext: '.css'
             }]
           }
@@ -163,13 +168,13 @@ module.exports = function (grunt) {
             dist: {}
         },*/
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: ['<%= yeoman.app %>/index.html', 'app/views/{,*/}*.handlebars'],
             options: {
                 dest: '<%= yeoman.dist %>'
             }
         },
         usemin: {
-            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            html: ['<%= yeoman.dist %>/{,*/}*.html', 'app/views/{,*/}*.handlebars'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
                 dirs: ['<%= yeoman.dist %>']
@@ -226,6 +231,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         'images/{,*/}*.{webp,gif}',
+                        'scripts/{,*/}*.js',
                         'styles/fonts/{,*/}*.*',
                         'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.*'
                     ]
@@ -288,7 +294,8 @@ module.exports = function (grunt) {
             'createDefaultTemplate',
             'jst',
             'sass:server',
-            'connect:livereload',
+            // 'connect:livereload',
+            'develop',
             'open:server',
             'watch'
         ]);
@@ -319,15 +326,7 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'jst',
         'sass:dist',
-        'useminPrepare',
-        'imagemin',
-        'htmlmin',
-        'concat',
-        'cssmin',
-        'uglify',
-        'copy',
-        'rev',
-        'usemin'
+        'copy'
     ]);
 
     grunt.registerTask('default', [
