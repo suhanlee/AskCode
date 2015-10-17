@@ -50,8 +50,8 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
-                    'test/spec/**/*.js'
+                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs,handlebars}',
+                    'test/spec/**/*.js',
                 ]
             },
             jst: {

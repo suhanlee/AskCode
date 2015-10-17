@@ -11,9 +11,23 @@ router.get('/', function (req, res, next) {
 //  res.render('index', { title: 'Express Test'})
   Article.find(function (err, articles) {
     if (err) return next(err);
-    res.render('index', {
+    res.render('articles/index', {
       title: 'Generator-Express MVC',
       articles: articles
+    });
+  });
+});
+
+router.get('/:title', function (req, res, next) {
+  var param_title = req.params.title;
+  console.log("param_title: " + param_title);
+  Article.find({ title: param_title }, function (err, article) {
+    if (err) return next(err);
+    console.log(article.length);
+    res.render('articles/show', {
+      count: article.length,
+      title: 'Article-Show',
+      article: article
     });
   });
 });

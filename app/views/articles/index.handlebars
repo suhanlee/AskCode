@@ -1,0 +1,13 @@
+<h1>{{title }}</h1>
+{{#each articles}}
+<p>{{title}} {{writer}} {{contents}}</p>
+{{/each}}
+
+Article Input
+<form action="/articles" method="POST">
+	<input type="hidden" name="_csrf" value="{{csrf}}">
+	<input type="text" name="title">
+	<input type="text" name="wrier">
+	<textarea name="contents"></textarea>
+	<button type="submit">Submit</input>
+</form>
