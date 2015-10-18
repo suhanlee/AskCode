@@ -33,11 +33,11 @@ router.get('/:title', function (req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  
+  console.log("router.post");
   new Article({
-    title: 'test',
-    writer: 'writer',
-    contents: 'contents'
+    title: req.params.title,
+    writer: req.params.writer,
+    contents: req.params.contents
   }).save();
   
   res.redirect(303, '/articles');
